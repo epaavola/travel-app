@@ -1,5 +1,5 @@
-# Adventure travels
-Full Stack web-application example.
+# Adventure tours
+Full Stack web-application example including public website for tours, admin dashboard and java backend.
 
 Build with:
 - React.js
