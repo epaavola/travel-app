@@ -22,6 +22,7 @@ import * as Passions from '../../constants/Passions'
 import * as Skills from '../../constants/Skills'
 import * as Types from '../../constants/Types'
 import * as Organizations from '../../constants/Organizations'
+import * as Countries from '../../constants/Countries'
 import { config } from '../../constants/Constants'
 import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
@@ -40,6 +41,7 @@ import Step from '@material-ui/core/Step'
 import { purple, green } from '@material-ui/core/colors'
 import { uploadFile } from '../../services/UploadFileService'
 import { useKeycloak } from '@react-keycloak/web'
+import { Autocomplete } from '@material-ui/lab'
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -318,20 +320,20 @@ const AddMissioDialog = (props) => {
                 <Grid item xs={12}>
                     <div>
                         <DialogContentText className={classes.infoText}>
-                            Täytä uuden mission tiedot taulukkoon ja paina sen jälkeen tallenna.
-                            Voit tallentaa mission myös keskeneräisenä.
+                            Fill the details of the new tour and after finished click save.
+                            You may even save the tour unfinished and continue later.
                         </DialogContentText>
                         <TextField
                             className={classes.TextField}
                             variant="standard"
-                            label="Mission nimi"
+                            label="Tour name"
                             type="text"
                             fullWidth
                             value={missioName.value}
                             onChange={missioName.onChange}
                         />
                         <FormControl className={classes.formControl}>
-                            <InputLabel >Organisaatio</InputLabel>
+                            <InputLabel >Organization</InputLabel>
                             <Select
                                 value={organization.value}
                                 onChange={organization.onChange}
@@ -342,9 +344,28 @@ const AddMissioDialog = (props) => {
                                     </MenuItem>
                                 ))}
                             </Select>
-                            <Typography variant="caption">Missiosta vastaava järjestö.</Typography>
+                            <Typography variant="caption">Company operating the tour.</Typography>
                         </FormControl>
                         <div className={classes.TextField}>
+                            <Autocomplete
+                                style={{ width: 300 }}
+                                options={Countries.data}
+                                autoHighlight
+                                InputValue={outreachLocation.value}
+                                onInputChange={outreachLocation.onChange}
+                                getOptionLabel={(option) => option.label}
+                                renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        label="Choose a country"
+                                        variant="outlined"
+                                        inputProps={{
+                                            ...params.inputProps,
+                                            autoComplete: 'new-password', // disable autocomplete and autofill
+                                        }}
+                                    />
+                                )}
+                            />
                             <TextField
                                 variant="standard"
                                 label="Mission kohde"
@@ -353,7 +374,7 @@ const AddMissioDialog = (props) => {
                                 value={outreachLocation.value}
                                 onChange={outreachLocation.onChange}
                             />
-                            <Typography variant="caption">Kohdesijainti esimerkiksi Tukholma, Ruotsi.</Typography>
+                            <Typography variant="caption">Tour destination.</Typography>
                         </div>
                         <FormControl className={classes.formControl}>
                             <InputLabel >Mission Luonne</InputLabel>
@@ -401,7 +422,7 @@ const AddMissioDialog = (props) => {
                             label="Mission Kesto"
                             type="number"
                             fullWidth
-                            value={length.value}  
+                            value={length.value}
                         />
                         <div className={classes.TextField}>
                             <TextField
@@ -413,7 +434,7 @@ const AddMissioDialog = (props) => {
                                 rows={3}
                                 value={description.value}
                                 onChange={description.onChange}
-                                inputProps = {{maxLength:200}}
+                                inputProps={{ maxLength: 200 }}
                             />
                             <Typography variant="caption">Lyhyt kuvaus missiosta (näkyy hakutuloksissa). Max 200 merkkiä.</Typography>
                         </div>
