@@ -63,7 +63,8 @@ const useStyles = makeStyles(theme => ({
         color: grey[800]
     },
     title: {
-        fontSize: "4.5vh"
+        fontSize: "2.5rem",
+        textAlign: "center"
     }
 }))
 

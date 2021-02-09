@@ -36,6 +36,12 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "center",
         flexDirection: "column",
     },
+    logo_m: {
+        display: "flex",
+        marginLeft: "0.25rem",
+        justifyContent: "center",
+        flexDirection: "column",
+    },
     link: {
         textDecoration: "none",
         paddingRight: "20px",
@@ -111,7 +117,7 @@ const NavigationBar = () => {
                             <IconButton onClick={e => handleMenuClick(e)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                                 <MenuIcon fontSize="large" />
                             </IconButton>
-                            <Box className={classes.logo}>
+                            <Box className={classes.logo_m}>
                                 <Link className={classes.link} to="/"><Typography className={classes.siteTitle} variant="h1" color="secondary">Adventure Tours</Typography></Link>
                                 <Link className={classes.link} to="/"><Typography variant="subtitle" color="secondary">Turn a trip into an adventure</Typography></Link>
                             </Box>
