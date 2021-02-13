@@ -1,5 +1,5 @@
 HELP.md
-
+application-prod.properties
 uploads/
 target/
 !.mvn/wrapper/maven-wrapper.jar
