@@ -212,7 +212,7 @@ const AddMissioDialog = (props) => {
 
     // Define steps for dialog
     function getSteps() {
-        return ['Mission tiedot', 'Lisätiedot', 'Haun tiedot', 'Julkaisu']
+        return ['Tour details', 'Additional information', 'Apply details', 'Publish']
     }
 
     // Set content for each step
@@ -347,7 +347,7 @@ const AddMissioDialog = (props) => {
                             <Typography variant="caption">Company operating the tour.</Typography>
                         </FormControl>
                         <div className={classes.TextField}>
-                            <Autocomplete
+                            { /* <Autocomplete
                                 style={{ width: 300 }}
                                 options={Countries.data}
                                 autoHighlight
@@ -365,10 +365,10 @@ const AddMissioDialog = (props) => {
                                         }}
                                     />
                                 )}
-                            />
+                                /> */ }
                             <TextField
                                 variant="standard"
-                                label="Mission kohde"
+                                label="Destination"
                                 type="text"
                                 fullWidth
                                 value={outreachLocation.value}
@@ -377,7 +377,7 @@ const AddMissioDialog = (props) => {
                             <Typography variant="caption">Tour destination.</Typography>
                         </div>
                         <FormControl className={classes.formControl}>
-                            <InputLabel >Mission Luonne</InputLabel>
+                            <InputLabel >Tour type</InputLabel>
                             <Select
                                 value={type.value}
                                 onChange={type.onChange}
@@ -395,7 +395,7 @@ const AddMissioDialog = (props) => {
                                 disableToolbar
                                 variant="inline"
                                 format="dd/MM/yyyy"
-                                label="Alkamispäivä"
+                                label="Start date"
                                 value={startDate.date}
                                 onChange={startDate.onDateChange}
                                 KeyboardButtonProps={{
@@ -407,7 +407,7 @@ const AddMissioDialog = (props) => {
                                 disableToolbar
                                 variant="inline"
                                 format="dd/MM/yyyy"
-                                label="Päättymispäivä"
+                                label="End date"
                                 value={endDate.date}
                                 onChange={endDate.onDateChange}
                                 KeyboardButtonProps={{
@@ -419,7 +419,7 @@ const AddMissioDialog = (props) => {
                             className={classes.TextField}
                             disabled
                             variant="standard"
-                            label="Mission Kesto"
+                            label="Tour duration"
                             type="number"
                             fullWidth
                             value={length.value}
@@ -427,7 +427,7 @@ const AddMissioDialog = (props) => {
                         <div className={classes.TextField}>
                             <TextField
                                 variant="standard"
-                                label="Kuvaus"
+                                label="Description"
                                 type="text"
                                 fullWidth
                                 multiline
@@ -436,7 +436,7 @@ const AddMissioDialog = (props) => {
                                 onChange={description.onChange}
                                 inputProps={{ maxLength: 200 }}
                             />
-                            <Typography variant="caption">Lyhyt kuvaus missiosta (näkyy hakutuloksissa). Max 200 merkkiä.</Typography>
+                            <Typography variant="caption">Short Description. Max 200 characters.</Typography>
                         </div>
                     </div>
                 </Grid>
@@ -450,7 +450,7 @@ const AddMissioDialog = (props) => {
             <>
                 <Grid item xs={12}>
                     <FormControl className={classes.formControl}>
-                        <InputLabel>Fokus</InputLabel>
+                        <InputLabel>Focus</InputLabel>
                         <Select
                             multiple
                             value={passions.value}
@@ -469,10 +469,10 @@ const AddMissioDialog = (props) => {
                                 </MenuItem>
                             ))}
                         </Select>
-                        <Typography variant="caption">Valitse listalta sopivia avainsanoja kuvaamaan mission fokusta. Voit valita useita.</Typography>
+                        <Typography variant="caption">Choose some keywords to descripe the tour.</Typography>
                     </FormControl>
                     <FormControl className={classes.formControl}>
-                        <InputLabel>Taidot</InputLabel>
+                        <InputLabel>Skill level</InputLabel>
                         <Select
                             multiple
                             value={skills.value}
@@ -491,7 +491,7 @@ const AddMissioDialog = (props) => {
                                 </MenuItem>
                             ))}
                         </Select>
-                        <Typography variant="caption">Valitse listalta sopivia avainsanoja kuvaamaan mission osaamisprofiilia. Voit valita useita.</Typography>
+                        <Typography variant="caption">Choose the skill level for the tour.</Typography>
                     </FormControl>
                     <div className={classes.TextField}>
                         <div role="alert">
@@ -508,37 +508,37 @@ const AddMissioDialog = (props) => {
                                 disabled={!fileSelected}
                                 onClick={e => handleUploadFile(e)}
                             >
-                                Lataa
+                                Upload
                             </Button>
                         </div>
-                        <Typography variant="caption">Lataa valokuva tietokoneelta. Max koko 2mb.</Typography>
+                        <Typography variant="caption">Upload picture from computer. Max size 2mb.</Typography>
                     </div>
                     <div className={classes.TextField}>
                         <TextField
                             variant="standard"
-                            label="Koulutuksen sijainti"
+                            label="Additional location"
                             type="text"
                             fullWidth
                             value={trainingLocation.value}
                             onChange={trainingLocation.onChange}
                         />
-                        <Typography variant="caption">Lisää koulutuksen sijainti (esim. Tampere, Suomi)</Typography>
+                        <Typography variant="caption">Add additional location</Typography>
                     </div>
                     <div className={classes.TextField}>
                         <TextField
                             variant="standard"
-                            label="Hinta (€)"
+                            label="Price (€)"
                             type="number"
                             fullWidth
                             value={price.value}
                             onChange={price.onChange}
                         />
-                        <Typography variant="caption">Arvio mission kustannuksista hakijalle.</Typography>
+                        <Typography variant="caption">Tour price.</Typography>
                     </div>
                     <div className={classes.TextField}>
                         <TextField
                             variant="standard"
-                            label="Pidempi kuvaus"
+                            label="Long Description"
                             type="text"
                             fullWidth
                             multiline
@@ -546,7 +546,7 @@ const AddMissioDialog = (props) => {
                             value={longDescription.value}
                             onChange={longDescription.onChange}
                         />
-                        <Typography variant="caption">Pidempi kuvaus missiosta (näkyy 'lue lisää' -sivulla).</Typography>
+                        <Typography variant="caption">Long Description.</Typography>
                     </div>
                 </Grid>
             </>
@@ -559,7 +559,7 @@ const AddMissioDialog = (props) => {
             <>
                 <Grid item xs={12}>
                     <DialogContentText className={classes.infoText}>
-                        Määritä missiolle hakuaika ja liitä linkki hakemukseen.
+                        Define the apply timeframe and paste the link to the booking site.
                     </DialogContentText>
                     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={fiLocale}>
                         <KeyboardDatePicker
@@ -567,7 +567,7 @@ const AddMissioDialog = (props) => {
                             disableToolbar
                             variant="inline"
                             format="dd/MM/yyyy"
-                            label="Haun Alkamispäivä"
+                            label="Apply date start"
                             value={applyDateStart.date}
                             onChange={applyDateStart.onDateChange}
                             KeyboardButtonProps={{
@@ -579,7 +579,7 @@ const AddMissioDialog = (props) => {
                             disableToolbar
                             variant="inline"
                             format="dd/MM/yyyy"
-                            label="Haun Päättymispäivä"
+                            label="Apply date end"
                             value={applyDateEnd.date}
                             onChange={applyDateEnd.onDateChange}
                             KeyboardButtonProps={{
@@ -590,13 +590,13 @@ const AddMissioDialog = (props) => {
                     <div className={classes.TextField}>
                         <TextField
                             variant="standard"
-                            label="Linkki hakemukseen"
+                            label="Booking link"
                             type="url"
                             fullWidth
                             value={website.value}
                             onChange={website.onChange}
                         />
-                        <Typography variant="caption">Liitä tähän linkki järjestön sivulla olevaan hakusivuun / hakulomakeeseen.</Typography>
+                        <Typography variant="caption">Link to the booking site.</Typography>
                     </div>
                 </Grid>
             </>
@@ -609,10 +609,10 @@ const AddMissioDialog = (props) => {
             <>
                 <Grid item xs={12}>
                     <div className={classes.headerField}>
-                        <Typography variant="h6">Aseta missio julkiseksi</Typography>
+                        <Typography variant="h6">Set tour publicly visble</Typography>
                     </div>
                     <Grid component="label" container alignItems="center" className={classes.formControl}>
-                        <Grid item>Ei</Grid>
+                        <Grid item>No</Grid>
                         <Grid item>
                             <Switch
                                 checked={active.value}
@@ -620,10 +620,10 @@ const AddMissioDialog = (props) => {
                                 color="primary"
                             />
                         </Grid>
-                        <Grid item>Kyllä</Grid>
+                        <Grid item>Yes</Grid>
                     </Grid>
                     <div className={classes.headerField}>
-                        <Typography variant="h6">Esikatselu</Typography>
+                        <Typography variant="h6">Preview</Typography>
                     </div>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12} className={classes.missioContainer}>
                         <Grid item xs={12}>
@@ -638,7 +638,7 @@ const AddMissioDialog = (props) => {
                                                 <Chip size="small" label={organization.value} icon={<BusinessIcon />} variant="outlined" />
                                                 <Chip size="small" label={outreachLocation.value} icon={<LocationOnIcon />} color="secondary" className={classes.chip1} />
                                                 <Chip size="small" label={new Date(startDate.value).toLocaleDateString('fi-FI', options)} icon={<TodayIcon />} variant="outlined" />
-                                                <Chip size="small" label={"Kesto: " + length.value + " päivää"} variant="outlined" />
+                                                <Chip size="small" label={"Duration: " + length.value + " days"} variant="outlined" />
                                             </div>
                                         </CardContent>
                                         <CardContent className={classes.missioInfoDescription}>
@@ -647,7 +647,7 @@ const AddMissioDialog = (props) => {
                                             </Typography>
                                         </CardContent>
                                         <CardContent className={classes.missioInfoPassion}>
-                                            <Typography>Fokus: </Typography>
+                                            <Typography>Focus: </Typography>
                                             {passions.value.slice(0, 3).map(passion => (
                                                 <div key={passion}>
                                                     <Chip size="small" label={passion} className={classes.chip2} />
@@ -663,7 +663,7 @@ const AddMissioDialog = (props) => {
                                                 title="title"
                                             />
                                             <Button variant="contained" className={classes.readMoreButton}>
-                                                Lue lisää
+                                                Read More
                                                 <KeyboardArrowRightIcon />
                                             </Button>
                                         </CardContent>
@@ -682,10 +682,10 @@ const AddMissioDialog = (props) => {
         <Dialog className={classes.dialog} fullScreen={true} open={props.open} onClose={props.handleClose} aria-labelledby="form-dialog-title">
             <AppBar className={classes.appBar} position="static">
                 <Toolbar>
-                    <DialogTitle>Luo uusi Missio</DialogTitle>
+                    <DialogTitle>Create new Tour</DialogTitle>
                     <div className={classes.appBarButtons}>
-                        <Button onClick={props.handleClose} color="secondary">Peruuta</Button>
-                        <Button onClick={onSubmit} color="secondary">Tallenna</Button>
+                        <Button onClick={props.handleClose} color="secondary">Cancel</Button>
+                        <Button onClick={onSubmit} color="secondary">Save</Button>
                     </div>
                 </Toolbar>
             </AppBar>
@@ -704,7 +704,7 @@ const AddMissioDialog = (props) => {
                     <Grid item xs={12} className={classes.buttonContainer}>
                         <div>
                             <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                                Takaisin
+                                Back
                             </Button>
                             {activeStep === steps.length - 1 ? '' : (
                                 <Button
@@ -713,7 +713,7 @@ const AddMissioDialog = (props) => {
                                     onClick={handleNext}
                                     className={classes.button}
                                 >
-                                    Seuraava
+                                    Next
                                 </Button>
                             )}
                         </div>
