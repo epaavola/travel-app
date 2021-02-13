@@ -31,13 +31,13 @@ const useStyles = makeStyles(theme => ({
     rootMissions: {
         display: "grid",
         gridGap: "20px",
-        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
         gridTemplateRows: "auto",
         margin: "0rem 2rem"
     },
     missio: {
         overflow: "hidden",
-        maxWidth: "250px",
+        maxWidth: "300px",
     },
     missioCard: {
         height: "30vh"
