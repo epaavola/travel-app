@@ -2,6 +2,7 @@
 Full Stack web-application example including public website for tours, admin dashboard and java backend.
 
 Demo site: https://travel.paavolagroup.fi
+Admin panel login: user: demo, pw: demo
 
 ### Technologies used:
 - Java
