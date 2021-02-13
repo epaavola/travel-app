@@ -1,8 +1,10 @@
 # Adventure tours
 Full Stack web-application example including public website for tours, admin dashboard and java backend.
 
-Demo site: https://travel.paavolagroup.fi
-Admin panel login: user: demo, pw: demo
+Demo site: https://travel.paavolagroup.fi <br>
+Admin panel login: 
+  - username: demo
+  - password: demo
 
 ### Technologies used:
 - Java
